@@ -1,6 +1,6 @@
 package testapp
 
-class Foo {
+class Foo implements Serializable{
 
     String name
     String value
