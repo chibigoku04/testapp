@@ -1,0 +1,8 @@
+import testapp.Foo
+
+model {
+	Iterable<Foo> fooList
+}
+
+json tmpl.foo(fooList ?: [])
+

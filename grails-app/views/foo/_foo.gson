@@ -1,0 +1,7 @@
+import testapp.Foo
+
+model {
+	Foo foo
+}
+
+json g.render(foo)
