@@ -79,7 +79,7 @@ class FooBarServiceIntegrationSpec extends Specification {
 
         then:
         thrown(ValidationException)
-        
+
         Foo.withTransaction {
             Foo.count == 0
         }
