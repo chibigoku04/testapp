@@ -5,6 +5,8 @@ import grails.transaction.Transactional
 @Transactional
 class FooBarService {
 
+    static transactional = 'mongo'
+
     FooService fooService
     BarService barService
 
