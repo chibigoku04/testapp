@@ -1,6 +1,6 @@
 package testapp
 
-class Foo {
+class Bar {
 
     String name
     String value
