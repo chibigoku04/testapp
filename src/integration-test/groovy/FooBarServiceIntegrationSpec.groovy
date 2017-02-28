@@ -20,7 +20,7 @@ class FooBarServiceIntegrationSpec extends Specification {
         assert Foo.count == 0
 
         Bar.where{}.deleteAll()
-        assert Foo.count == 0
+        assert Bar.count == 0
 
         //below doesn't work in mongo, above doesn't work in hibernate
        /* Foo.withTransaction {
