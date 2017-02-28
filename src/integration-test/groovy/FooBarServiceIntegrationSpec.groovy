@@ -16,7 +16,14 @@ class FooBarServiceIntegrationSpec extends Specification {
     }
 
     def cleanup() {
-        Foo.withTransaction {
+        Foo.where{}.deleteAll()
+        assert Foo.count == 0
+
+        Bar.where{}.deleteAll()
+        assert Foo.count == 0
+
+        //below doesn't work in mongo, above doesn't work in hibernate
+       /* Foo.withTransaction {
             def foos = Foo.findAll()
             foos.each { it.delete() }
             assert Foo.count == 0
@@ -26,7 +33,7 @@ class FooBarServiceIntegrationSpec extends Specification {
             def bars = Bar.findAll()
             bars.each { it.delete() }
             assert Bar.count == 0
-        }
+        }*/
     }
 
     void "test create valid foo and valid bar in same transaction in single service"() {
