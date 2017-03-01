@@ -50,6 +50,7 @@ class FooBarServiceIntegrationSpec extends Specification {
         }
     }
 
+    //SUCCEEDS- rolls back the foo when the bar fails
     void "test create valid foo and invalid bar in same transaction in single service"() {
         when:
         fooBarService.createAFooAndABar('foo', 'fooVal', 'bar', null)
@@ -81,6 +82,7 @@ class FooBarServiceIntegrationSpec extends Specification {
         }
     }
 
+    //FAILS- doesn't rollback foo when the bar fails
     void "test create valid foo and invalid bar in same transaction in single service in separate methods"() {
         when:
         fooBarService.createAFooAndABarSeparateMethods('foo', 'fooVal', 'bar', null)
@@ -111,6 +113,7 @@ class FooBarServiceIntegrationSpec extends Specification {
         }
     }
 
+    //FAILS- doesn't rollback foo when the bar fails
     void "test create valid foo and invalid bar in same transaction in 2 services"() {
         when:
         fooBarService.createAFooAndABarSeparateServices('foo', 'fooVal', 'bar', null)
