@@ -66,6 +66,37 @@ class FooBarServiceIntegrationSpec extends Specification {
         }
     }
 
+
+    void "test create valid foo and valid bar in same transaction in single service in separate methods"() {
+        when:
+        fooBarService.createAFooAndABarSeparateMethods('foo', 'fooVal', 'bar', 'barVal')
+
+        then:
+        Foo.withTransaction {
+            Foo.count == 1
+        }
+
+        Bar.withTransaction {
+            Bar.count == 1
+        }
+    }
+
+    void "test create valid foo and invalid bar in same transaction in single service in separate methods"() {
+        when:
+        fooBarService.createAFooAndABarSeparateMethods('foo', 'fooVal', 'bar', null)
+
+        then:
+        thrown(ValidationException)
+
+        Foo.withTransaction {
+            Foo.count == 0
+        }
+
+        Bar.withTransaction {
+            Bar.count == 0
+        }
+    }
+
     void "test create valid foo and valid bar in same transaction in 2 services"() {
         when:
         fooBarService.createAFooAndABarSeparateServices('foo', 'fooVal', 'bar', 'barVal')
