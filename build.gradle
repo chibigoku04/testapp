@@ -58,6 +58,8 @@ dependencies {
     testCompile "org.grails:grails-datastore-rest-client"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+
+    provided "org.grails.plugins:embedded-mongodb:1.0.1"
 }
 
 bootRun {
